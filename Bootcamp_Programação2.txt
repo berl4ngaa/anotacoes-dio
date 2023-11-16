@@ -1,0 +1,111 @@
+Versionamento de código git e github: 
+
+Visão geral: 
+
+O que é versionamento código ? 
+Versionamento de código resumidamente trata-se de uma forma de gerenciarmos nossos projetos em versões através de um sistema de controle de versão. 
+Temos VCS (Version Control System) centralizado -> Tem um servidor central do qual estabelece uma conexão com todos os envolvidos do projeto e salva automaticamente cada alteração, o único problema é se caso o servidor cair, acabou KKK
+VCS (Version Control System) Distribuido -> Onde o banco de versão (o conjunto encapsulado de todas as versões juntas divididas cada uma em arquivos) fica armazenado localmente em cada envolvido e no servidor central, assim, caso 
+o servidor caia, ele pode recuperar os dados na sua máquina.
+
+git -> Interface de gerenciamento de versão dinamica 
+
+comandos : 
+
+git clone -> Clona repositório externo
+git commit -> Grava alterações no repositório
+git pull -> Puxa alterações do repositório remoto para o local
+git push -> Empurra as alterações no repositório
+
+Github -> Plataforma de hospedagem de código dinamica
+
+adicionar todos os nomes e email para os repositório:
+o --global se refere a uma configuração para todos os usuários do sistema
+user.name e user.mail se referem a variveis internas do git que correspondem a
+o valor do registro e da conta utilizada naquela shell github 
+
+git config --global user.name "nome de usuario"
+
+git config --global user.mail "email"
+
+ver a branch padrão: 
+(As branchs são o que chamam de "linha de desenvolviemnto" similar a sessões que 
+criam um ambiente do qual irá lincar seu código local ao código do repositório,
+por padrão, recebem o nome "main" porém você pode trocar) 
+
+git config init.defaultBranch 
+
+alterar:
+
+git config --global init.defaultBranch nome
+
+Adicionar token padrão: 
+
+git config --global credential.helper store 
+
+Arquivos padrão do git: 
+
+.gitconfig -> Valores e configurações setados manualmente 
+.git-credentials -> tokens selecionados e sessões https e ssh
+
+lincando repositório local ao remoto:
+
+clone o repositório existente
+entre no diretório do repositório existente
+
+git remote add origin (url do repositório externo)
+
+*O README SERVE PARA DESCREVER INFORMAÇÔES DO PROJETO
+* O .gitignore serve para passar arquivos que vc quer que o repositório clones
+
+Criando repositório:
+
+git add (diretório) 
+entre no diretório
+git init ==> Inicializa o git 
+
+(Caso queira verificar, digite "git status")
+
+para adicionar ao repositório um arquivo novo: 
+
+git add (nome do arquivo) ==> A partir daqui ele estará em zona de preparação pré encaminhada para ser emplantada
+
+git commit -m"mensagem" ==> Upa os arquivos para assim atualizar o repositório 
+
+git log ==> Ver histórico de log do git
+git reflog ==> Histórico mais detalhado
+
+Corrigindo repositórios iniciados sem querer:
+
+Caso tenha iniciado o git em um diretório errado, basta deletar a .git 
+
+para restaurar alterações do arquivo, de um "git restore"
+
+para editar a mensagem de um commit basta dar o "git commit --amend" e editar a 1° linha com texto (A mensagem atual do 
+commit)
+
+enviar repositório local para o remóto (O oficial do github mesmo): 
+
+git remote add origin (Url do repositório com .git) ==> Seta que a origem de conexão para nós será o X repositório 
+
+git branch -M main ==> Declara que a branch utilizada será a main
+
+git commit -m (Mensagem) ==> envia valor para o github
+
+git push -u origin main ==> efetua a atuialização 
+
+(Ou então o comando "git pull" mescla as auterações de ambos repositórios) 
+
+para resetar o commit basta: git reset --soft (hash do commit) 
+Agora ele vai pegar os arquivos do commit selecionado e vai passar a área de preparação
+ou também, apenas: git reset (Assim ele vai só adicionar localmente e os arquivos serão reconhecidos como untracked) 
+
+
+Trabalhando com branchs:
+
+git branch -> Mostra a branch atual
+-d (deleta uma branch) 
+
+git merge nome -> Cria nova brech
+
+git diff  (x)/(y) -> Compara 2 brenchs 
